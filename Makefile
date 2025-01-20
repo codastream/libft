@@ -20,6 +20,7 @@ OBJ_DIR:= 		./
 SRCS_FILES =	array/ft_has_unique_values_array.c\
 				array/ft_quick_sort.c\
 				array/ft_count_2dchar_null_ended.c\
+				array/ft_count_3dchar_null_ended.c\
 				conversion/ft_atoi_base.c\
 				conversion/ft_hextoi.c\
 				conversion/ft_atoi.c\
@@ -55,6 +56,7 @@ SRCS_FILES =	array/ft_has_unique_values_array.c\
 				mem/ft_memset.c\
 				print/ft_print_address.c\
 				print/ft_print_array_int.c\
+				print/ft_print_tabstr.c\
 				print/ft_print_char.c\
 				print/ft_print_hexa.c\
 				print/ft_print_integer.c\
@@ -96,6 +98,8 @@ SRCS_FILES =	array/ft_has_unique_values_array.c\
 				string/ft_strnstr.c\
 				string/ft_strchr.c\
 				string/ft_strchri.c\
+				string/ft_strstri.c\
+				string/ft_strcharsi.c\
 				string/ft_strrchr.c\
 				string/ft_strtrim.c\
 				string/ft_substr.c\

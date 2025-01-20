@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_array_int.c                               :+:      :+:    :+:   */
+/*   ft_count_3dchar_null_ended.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fpetit <fpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/25 20:52:32 by fpetit            #+#    #+#             */
-/*   Updated: 2025/01/20 20:01:20 by fpetit           ###   ########.fr       */
+/*   Created: 2024/12/21 11:37:02 by fpetit            #+#    #+#             */
+/*   Updated: 2025/01/20 16:07:52 by fpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-void	ft_print_array_int(int *tab, int size)
+int	ft_count_3dchar_null_ended(void ***tab)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
-	while (i < size)
-		ft_printf("[%d] ", tab[i++]);
-	ft_printf("\n");
+	while ((char **) tab[i])
+		i++;
+	return (i);
 }

@@ -1,23 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_array_int.c                               :+:      :+:    :+:   */
+/*   ft_strstri.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fpetit <fpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/25 20:52:32 by fpetit            #+#    #+#             */
-/*   Updated: 2025/01/20 20:01:20 by fpetit           ###   ########.fr       */
+/*   Created: 2025/01/19 17:22:24 by fpetit            #+#    #+#             */
+/*   Updated: 2025/01/19 17:32:15 by fpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-void	ft_print_array_int(int *tab, int size)
+int	ft_strstri(char *str, char **searched)
 {
-	int	i;
+	int		i;
+	int		j;
+	size_t	len;
 
 	i = 0;
-	while (i < size)
-		ft_printf("[%d] ", tab[i++]);
-	ft_printf("\n");
+	while (str[i])
+	{
+		j = 0;
+		while (searched[j])
+		{
+			len = ft_strlen(searched[j]);
+			if (!ft_strncmp(searched[j], &str[i], len))
+				return (i);
+			j++;
+		}
+		i++;
+	}
+	return (-1);
 }

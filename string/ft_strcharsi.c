@@ -1,23 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_array_int.c                               :+:      :+:    :+:   */
+/*   ft_strstri.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fpetit <fpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/25 20:52:32 by fpetit            #+#    #+#             */
-/*   Updated: 2025/01/20 20:01:20 by fpetit           ###   ########.fr       */
+/*   Created: 2025/01/19 17:12:22 by fpetit            #+#    #+#             */
+/*   Updated: 2025/01/19 17:31:38 by fpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-void	ft_print_array_int(int *tab, int size)
+/*
+ * returns index of first character among searched in str
+ * returns -1 if no character of searched is found in str
+ */
+int	ft_strcharsi(char *str, char *searched)
 {
 	int	i;
 
 	i = 0;
-	while (i < size)
-		ft_printf("[%d] ", tab[i++]);
-	ft_printf("\n");
+	while (str[i])
+	{
+		if (ft_strchri(searched, str[i]) == -1)
+			i++;
+		else
+			return (i);
+	}
+	return (-1);
 }

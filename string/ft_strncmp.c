@@ -6,7 +6,7 @@
 /*   By: fpetit <fpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 10:45:29 by fpetit            #+#    #+#             */
-/*   Updated: 2024/11/27 12:39:44 by fpetit           ###   ########.fr       */
+/*   Updated: 2025/01/20 11:05:40 by fpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,10 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	size_t	i;
 
+	if (!s1)
+		return ((unsigned char) *s2);
+	if (!s2)
+		return ((unsigned char) *s1);
 	if (n == 0)
 		return (0);
 	i = 0;

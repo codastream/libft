@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_array_int.c                               :+:      :+:    :+:   */
+/*   ft_print_tabstr.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fpetit <fpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/25 20:52:32 by fpetit            #+#    #+#             */
-/*   Updated: 2025/01/20 20:01:20 by fpetit           ###   ########.fr       */
+/*   Created: 2025/01/20 19:58:44 by fpetit            #+#    #+#             */
+/*   Updated: 2025/01/20 20:04:28 by fpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-void	ft_print_array_int(int *tab, int size)
+void	ft_print_tabstr(char **tab)
 {
 	int	i;
 
 	i = 0;
-	while (i < size)
-		ft_printf("[%d] ", tab[i++]);
-	ft_printf("\n");
+	while (tab[i])
+	{
+		ft_printf("%d -> %s\n", i, tab[i]);
+		i++;
+	}
 }

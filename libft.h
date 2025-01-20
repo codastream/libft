@@ -45,6 +45,7 @@ typedef struct s_hash
 bool				ft_has_unique_values_array(int *values, int size);
 void				ft_quick_sort_tab(int *tab, int from, int to);
 int					ft_count_2dchar_null_ended(char **tab);
+int					ft_count_3dchar_null_ended(void ***tab);
 
 int					ft_atoi_base(char *nbr, char *base);
 int					ft_atoi(const char *nptr);
@@ -86,7 +87,8 @@ void				*ft_memmove(void *dest, const void *src, size_t n);
 void				*ft_memset(void *s, int c, size_t n);
 
 int					ft_print_address(intptr_t address);
-void				print_array_int(int *tab, int size);
+void				ft_print_array_int(int *tab, int size);
+void				ft_print_tabstr(char **tab);
 int					ft_print_char(int c);
 int					ft_print_hexa(unsigned long long n, int is_upper);
 int					ft_print_integer(int n);
@@ -124,6 +126,8 @@ char				**ft_split_str(char const *s, char *charset);
 char				*ft_strcat(char *dest, char *src);
 char				*ft_strchr(const char *s, int c);
 int					ft_strchri(const char *s, unsigned char c);
+int					ft_strcharsi(char *str, char *searchedchars);
+int					ft_strstri(char *str, char **searched);
 int					ft_strcmp(const char *s1, const char *s2);
 char				*ft_strdup(const char *s);
 void				ft_striteri(char *s, void (*f)(unsigned int, char*));

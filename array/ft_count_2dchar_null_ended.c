@@ -6,7 +6,7 @@
 /*   By: fpetit <fpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 11:37:02 by fpetit            #+#    #+#             */
-/*   Updated: 2024/12/21 12:30:02 by fpetit           ###   ########.fr       */
+/*   Updated: 2025/01/20 15:53:15 by fpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,6 @@ int	ft_count_2dchar_null_ended(char **tab)
 
 	i = 0;
 	while (tab[i])
-		i ++;
+		i++;
 	return (i);
 }
