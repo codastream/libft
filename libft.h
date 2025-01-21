@@ -123,6 +123,7 @@ bool				ft_isnumstr(char *s);
 int					ft_isprint(int c);
 char				**ft_split(char const *s, char c);
 char				**ft_split_str(char const *s, char *charset);
+char				**ft_split_skip(char const *s, char **charsets);
 char				*ft_strcat(char *dest, char *src);
 char				*ft_strchr(const char *s, int c);
 int					ft_strchri(const char *s, unsigned char c);
