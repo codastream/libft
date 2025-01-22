@@ -6,7 +6,7 @@
 /*   By: fpetit <fpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 14:05:35 by fpetit            #+#    #+#             */
-/*   Updated: 2025/01/22 16:05:00 by fpetit           ###   ########.fr       */
+/*   Updated: 2025/01/22 17:57:19 by fpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,10 +155,7 @@ void	count_delim(t_splitter *splitter, t_delimiter **delims, size_t *i, int *cou
 			opening_delim->is_closed = false;
 			len_delim_token = count_len_till_closing_delim(&s[*i], opening_delim);
 			if (len_delim_token > 0) // if closing delim found we count 1 space for the split
-			{
-				ft_printf("count_delim - new count: %d @ %s\n", *count, &s[*i]);
 				count_elem(i, len_delim_token, count);
-			}
 			opening_delim->is_closed = true;
 		}
 		else
@@ -166,8 +163,6 @@ void	count_delim(t_splitter *splitter, t_delimiter **delims, size_t *i, int *cou
 	}
 	else if (closing_delim)
 	{
-		// if (!closing_delim->is_closed)
-		// 	closing_delim->is_closed = true;
 		count_elem(i, ft_strlen(closing_delim->closing), count);
 	}
 }
