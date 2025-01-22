@@ -6,7 +6,7 @@
 /*   By: fpetit <fpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 14:09:00 by fpetit            #+#    #+#             */
-/*   Updated: 2025/01/22 16:36:36 by fpetit           ###   ########.fr       */
+/*   Updated: 2025/01/22 17:52:24 by fpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,13 @@ void	add_sep(t_splitter *splitter, char **seps, size_t *i, char **splitted)
 		len_sep = ft_strlen(seps[j]);
 		if (!ft_strncmp(&s[*i], seps[j], len_sep))
 		{
-			e = ft_count_2dchar_null_ended(splitted);
-			ft_printf("adding at index #%d\t%s\n", e, seps[j]);
-			splitted[e] = ft_strdup(seps[j]);
-			check_malloc(splitter, splitted, splitted[e]);
+			if (!ft_isemptystr(seps[j]))
+			{
+				e = ft_count_2dchar_null_ended(splitted);
+				ft_printf("adding at index #%d\t%s\n", e, seps[j]);
+				splitted[e] = ft_strdup(seps[j]);
+				check_malloc(splitter, splitted, splitted[e]);
+			}
 			*i += len_sep;
 		}
 		j++;
@@ -40,7 +43,8 @@ void	count_sep(char *sep, size_t *i, int *count)
 {
 	size_t	len;
 
-	*count += 1;
+	if (!ft_isemptystr(sep))
+		*count += 1;
 	len = ft_strlen(sep);
 	*i += len;
 }

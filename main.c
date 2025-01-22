@@ -12,5 +12,6 @@ int	main(int ac, char **av)
 	charsets[1] = NULL;
 	char **splitted = ft_split_skip(av[1], charsets);
 	ft_print_tabstr(splitted);
+	free(charsets);
 	ft_free_2d_char_null_ended(splitted);
 }
