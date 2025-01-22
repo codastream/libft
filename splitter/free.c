@@ -6,7 +6,7 @@
 /*   By: fpetit <fpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 13:57:03 by fpetit            #+#    #+#             */
-/*   Updated: 2025/01/22 14:46:48 by fpetit           ###   ########.fr       */
+/*   Updated: 2025/01/22 18:08:24 by fpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	free_delimiters(t_delimiter **delims)
 	}
 	free(delims);
 }
+
 void	free_splitted(char **splitted)
 {
 	int	i;
@@ -56,4 +57,3 @@ void	check_malloc(t_splitter *splitter, char **splitted, void *allocated)
 		free_splitter(splitter);
 	}
 }
-

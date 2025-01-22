@@ -6,7 +6,7 @@
 /*   By: fpetit <fpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 13:57:27 by fpetit            #+#    #+#             */
-/*   Updated: 2025/01/22 16:11:28 by fpetit           ###   ########.fr       */
+/*   Updated: 2025/01/22 18:15:21 by fpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct s_delimiter
 typedef struct s_splitter
 {
 	char		*s;
-	int			index;;
+	int			index;
 	int			count;
 	t_delimiter	**delims;
 	char		**seps;
@@ -35,24 +35,29 @@ typedef struct s_splitter
 
 t_delimiter	**init_quote_delimiters(void);
 t_splitter	*init_splitter(const char *str, char **seps);
+char		**init_splitted(t_splitter *splitter, char *s, char **seps, \
+				t_delimiter **delims);
 void		reset_delim_close_status(t_delimiter **delims);
 
 void		free_delimiters(t_delimiter **delims);
 void		free_splitted(char **splitted);
 void		free_splitter(t_splitter *splitter);
-void		check_malloc(t_splitter *splitter, char **splitted, void *allocated);
+void		check_malloc(t_splitter *splitter, char **splitted, \
+				void *allocated);
 
 t_delimiter	*get_delimiter(char *s, t_delimiter **delims, char delim_type);
 int			count_len_till_closing_delim(char *s, t_delimiter *delim);
 bool		is_outside_delims(t_delimiter **delims);
 bool		can_split_delim(t_delimiter **delims, t_delimiter *delim);
-void 		count_delim(t_splitter *splitter, t_delimiter **delims, size_t *i, int *count);
+void		count_delim(t_splitter *splitter, t_delimiter **delims, \
+				size_t *i, int *count);
 void		add_if_new_delim(t_splitter *splitter, char **splitted, size_t *i);
 
 void		add_elem(t_splitter *splitter, char **splitted, int len, size_t *i);
 
 char		*get_sep(char *s, char **seps);
 void		count_sep(char *sep, size_t *i, int *count);
-void		add_sep(t_splitter *splitter, char **seps, size_t *i, char **splitted);
+void		add_sep(t_splitter *splitter, char **seps, size_t *i, \
+				char **splitted);
 
 #endif

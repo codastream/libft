@@ -6,7 +6,7 @@
 /*   By: fpetit <fpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 14:09:00 by fpetit            #+#    #+#             */
-/*   Updated: 2025/01/22 17:57:35 by fpetit           ###   ########.fr       */
+/*   Updated: 2025/01/22 18:12:43 by fpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	add_sep(t_splitter *splitter, char **seps, size_t *i, char **splitted)
 {
-	int 	j;
+	int		j;
 	int		e;
 	size_t	len_sep;
 	char	*s;

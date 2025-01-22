@@ -6,7 +6,7 @@
 /*   By: fpetit <fpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 16:27:06 by fpetit            #+#    #+#             */
-/*   Updated: 2025/01/22 17:57:29 by fpetit           ###   ########.fr       */
+/*   Updated: 2025/01/22 18:02:17 by fpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	add_elem(t_splitter *splitter, char **splitted, int len, size_t *i)
 	check_malloc(splitter, splitted, splitted[e]);
 	*i += len + 1;
 }
+
 void	count_word(t_splitter *splitter, size_t *i, int *count)
 {
 	size_t	len;
@@ -38,7 +39,9 @@ void	count_word(t_splitter *splitter, size_t *i, int *count)
 		*i += len;
 	}
 }
-void	add_word_outside_delims(t_splitter *splitter, size_t *i, char **splitted)
+
+void	add_word_outside_delims(t_splitter *splitter, size_t *i, \
+	char **splitted)
 {
 	size_t	len;
 	char	*s;
@@ -55,33 +58,8 @@ void	add_word_outside_delims(t_splitter *splitter, size_t *i, char **splitted)
 	}
 }
 
-static char	**init_splitted(t_splitter *splitter, char *s, char **seps, t_delimiter **delims)
-{
-	int			count;
-	size_t		i;
-	char		**splitted;
-
-	if (!s)
-		return (NULL);
-	i = 0;
-	count = 0;
-	while (s[i])
-	{
-		while (s[i] && get_sep(&s[i], seps))
-		{
-			count_sep(get_sep(&s[i], seps), &i, &count);
-		}
-		while (s[i] && get_delimiter(&s[i], delims, 'a'))
-			count_delim(splitter, delims, &i, &count);
-		count_word(splitter, &i, &count);
-	}
-	splitted = (char **)ft_calloc(count + 1, sizeof(char *));
-	if (!splitted)
-		return (NULL);
-	return (splitted);
-}
-
-static void	*fill_splitted(t_splitter *splitter, char **seps, t_delimiter **delims, char **splitted)
+static void	*fill_splitted(t_splitter *splitter, char **seps, \
+	t_delimiter **delims, char **splitted)
 {
 	int		e;
 	size_t	i;
@@ -110,15 +88,15 @@ static void	*fill_splitted(t_splitter *splitter, char **seps, t_delimiter **deli
  */
 char	**ft_split_skip(const char *str, char **seps)
 {
-	t_splitter 	*splitter;
+	t_splitter	*splitter;
 	char		**splitted;
 
 	splitter = init_splitter(str, seps);
-	splitted = init_splitted(splitter, splitter->s, splitter->seps, splitter->delims);
+	splitted = init_splitted(splitter, splitter->s, splitter->seps, \
+		splitter->delims);
 	check_malloc(splitter, splitted, splitted);
 	reset_delim_close_status(splitter->delims);
 	fill_splitted(splitter, splitter->seps, splitter->delims, splitted);
 	free_splitter(splitter);
 	return (splitted);
 }
-

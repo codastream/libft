@@ -6,12 +6,11 @@
 /*   By: fpetit <fpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 14:03:32 by fpetit            #+#    #+#             */
-/*   Updated: 2025/01/22 16:18:01 by fpetit           ###   ########.fr       */
+/*   Updated: 2025/01/22 18:03:47 by fpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "splitter.h"
-
 
 t_delimiter	*new_delimiter(char *opening, char *closing)
 {
@@ -41,7 +40,7 @@ void	reset_delim_close_status(t_delimiter **delims)
 
 t_delimiter	**init_quote_delimiters(void)
 {
-	t_delimiter **delims;
+	t_delimiter	**delims;
 	int			nb_delims;
 	int			i;
 
@@ -71,4 +70,31 @@ t_splitter	*init_splitter(const char *str, char **seps)
 	splitter->seps = seps;
 	check_malloc(splitter, NULL, splitter->delims);
 	return (splitter);
+}
+
+char	**init_splitted(t_splitter *splitter, char *s, char **seps, \
+	t_delimiter **delims)
+{
+	int			count;
+	size_t		i;
+	char		**splitted;
+
+	if (!s)
+		return (NULL);
+	i = 0;
+	count = 0;
+	while (s[i])
+	{
+		while (s[i] && get_sep(&s[i], seps))
+		{
+			count_sep(get_sep(&s[i], seps), &i, &count);
+		}
+		while (s[i] && get_delimiter(&s[i], delims, 'a'))
+			count_delim(splitter, delims, &i, &count);
+		count_word(splitter, &i, &count);
+	}
+	splitted = (char **)ft_calloc(count + 1, sizeof(char *));
+	if (!splitted)
+		return (NULL);
+	return (splitted);
 }
