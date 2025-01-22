@@ -77,6 +77,7 @@ SRCS_FILES =	array/ft_has_unique_values_array.c\
 				printfd/ft_print_unsigned_fd.c\
 				printfd/ft_printfd.c\
 				splitter/delimiters.c\
+				splitter/delimiters2.c\
 				splitter/free.c\
 				splitter/ft_splitter.c\
 				splitter/init.c\

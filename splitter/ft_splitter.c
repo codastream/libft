@@ -6,7 +6,7 @@
 /*   By: fpetit <fpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 16:27:06 by fpetit            #+#    #+#             */
-/*   Updated: 2025/01/22 18:02:17 by fpetit           ###   ########.fr       */
+/*   Updated: 2025/01/22 18:47:15 by fpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ static void	*fill_splitted(t_splitter *splitter, char **seps, \
 			add_sep(splitter, seps, &i, splitted);
 		}
 		while (s[i] && get_delimiter(&s[i], delims, 'a'))
-			add_if_new_delim(splitter, splitted, &i);
+			add_in_delim(splitter, splitted, &i);
 		add_word_outside_delims(splitter, &i, splitted);
 	}
 	e = ft_count_2dchar_null_ended(splitted);

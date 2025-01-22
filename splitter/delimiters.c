@@ -6,7 +6,7 @@
 /*   By: fpetit <fpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 14:05:35 by fpetit            #+#    #+#             */
-/*   Updated: 2025/01/22 18:11:32 by fpetit           ###   ########.fr       */
+/*   Updated: 2025/01/22 18:46:59 by fpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	count_delim(t_splitter *splitter, t_delimiter **delims, size_t *i, \
 		count_elem(i, ft_strlen(closing_delim->closing), count);
 }
 
-void	add_if_new_delim(t_splitter *splitter, char **splitted, size_t *i)
+void	add_in_delim(t_splitter *splitter, char **splitted, size_t *i)
 {
 	t_delimiter	*opening_delim;
 	t_delimiter	*closing_delim;
