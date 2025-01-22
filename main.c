@@ -1,4 +1,5 @@
 #include "libft/libft.h"
+#include "libft/splitter/splitter.h"
 #include <stdio.h>
 
 int	main(int ac, char **av)
