@@ -6,7 +6,7 @@
 /*   By: fpetit <fpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 14:09:00 by fpetit            #+#    #+#             */
-/*   Updated: 2025/01/22 14:45:19 by fpetit           ###   ########.fr       */
+/*   Updated: 2025/01/22 16:36:36 by fpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,9 @@ void	add_sep(t_splitter *splitter, char **seps, size_t *i, char **splitted)
 		if (!ft_strncmp(&s[*i], seps[j], len_sep))
 		{
 			e = ft_count_2dchar_null_ended(splitted);
+			ft_printf("adding at index #%d\t%s\n", e, seps[j]);
 			splitted[e] = ft_strdup(seps[j]);
-			if (!splitted[e])
-			{
-				free_splitter(splitter);
-				free_splitted(splitted);
-			}
+			check_malloc(splitter, splitted, splitted[e]);
 			*i += len_sep;
 		}
 		j++;

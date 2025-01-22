@@ -6,7 +6,7 @@
 /*   By: fpetit <fpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 16:27:06 by fpetit            #+#    #+#             */
-/*   Updated: 2025/01/22 16:14:37 by fpetit           ###   ########.fr       */
+/*   Updated: 2025/01/22 17:25:29 by fpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ void	add_elem(t_splitter *splitter, char **splitted, int len, size_t *i)
 	int	e;
 
 	e = ft_count_2dchar_null_ended(splitted);
-	splitted[e] = ft_substr(splitter->s, *i, len);
+	splitted[e] = ft_substr(splitter->s, *i, len + 1);
+	ft_printf("adding at index #%d\t%s\n", e, splitted[e]);
 	check_malloc(splitter, splitted, splitted[e]);
 	*i += len + 1;
 }
@@ -47,12 +48,12 @@ void	add_word_outside_delims(t_splitter *splitter, size_t *i, char **splitted)
 	s = splitter->s;
 	len = 0;
 	while (s[*i + len] && is_outside_delims(splitter->delims) \
-		&& !get_delimiter(&s[*i], splitter->delims, 'a') \
-		&& !get_sep(&s[*i], splitter->seps))
+		&& !get_delimiter(&s[*i + len], splitter->delims, 'a') \
+		&& !get_sep(&s[*i + len], splitter->seps))
 		len++;
 	if (len > 0)
 	{
-		add_elem(splitter, splitted, len, i);
+		add_elem(splitter, splitted, len - 1, i);
 	}
 }
 
@@ -70,13 +71,11 @@ static char	**init_splitted(t_splitter *splitter, char *s, char **seps, t_delimi
 	{
 		while (s[i] && get_sep(&s[i], seps))
 		{
-			ft_printf("count_sep - new count %d @ %s\n", count + 1, &s[i]);
+			ft_printf("count_sep\tnew count\t%d\t>\t%s\n", count + 1, &s[i]);
 			count_sep(get_sep(&s[i], seps), &i, &count);
 		}
 		while (s[i] && get_delimiter(&s[i], delims, 'a'))
 			count_delim(splitter, delims, &i, &count);
-		// while (s[i] && get_sep(&s[i], seps))
-		// 	count_sep(get_sep(&s[i], seps), &i, &count);
 		count_word(splitter, &i, &count);
 	}
 	ft_printf("count: %d\n", count);
@@ -90,7 +89,6 @@ static void	*fill_splitted(t_splitter *splitter, char **seps, t_delimiter **deli
 {
 	int		e;
 	size_t	i;
-	char	*test;
 	char	*s;
 
 	i = 0;
@@ -98,17 +96,15 @@ static void	*fill_splitted(t_splitter *splitter, char **seps, t_delimiter **deli
 	s = splitter->s;
 	while (s[i])
 	{
-		test = get_sep(&s[i], seps);
-		while (is_outside_delims(delims) && test)
+		while (s[i] && get_sep(&s[i], seps))
 		{
 			add_sep(splitter, seps, &i, splitted);
-			test = get_sep(&s[i], seps);
 		}
 		while (s[i] && get_delimiter(&s[i], delims, 'a'))
 			add_if_new_delim(splitter, splitted, &i);
-		while (s[i] && is_outside_delims(delims) && !get_sep(&s[i], seps))
-			i++;
+		add_word_outside_delims(splitter, &i, splitted);
 	}
+	e = ft_count_2dchar_null_ended(splitted);
 	splitted[e] = NULL;
 	return (splitted);
 }
@@ -126,7 +122,6 @@ char	**ft_split_skip(const char *str, char **seps)
 	check_malloc(splitter, splitted, splitted);
 	reset_delim_close_status(splitter->delims);
 	fill_splitted(splitter, splitter->seps, splitter->delims, splitted);
-	splitted = splitter->splitted;
 	free_splitter(splitter);
 	return (splitted);
 }

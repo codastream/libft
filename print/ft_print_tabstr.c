@@ -6,7 +6,7 @@
 /*   By: fpetit <fpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 19:58:44 by fpetit            #+#    #+#             */
-/*   Updated: 2025/01/20 20:04:28 by fpetit           ###   ########.fr       */
+/*   Updated: 2025/01/22 16:41:07 by fpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	ft_print_tabstr(char **tab)
 	int	i;
 
 	i = 0;
+	if (!tab)
+		return ;
 	while (tab[i])
 	{
 		ft_printf("%d -> %s\n", i, tab[i]);
