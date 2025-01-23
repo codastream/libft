@@ -6,36 +6,27 @@
 /*   By: fpetit <fpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 14:09:00 by fpetit            #+#    #+#             */
-/*   Updated: 2025/01/22 18:12:43 by fpetit           ###   ########.fr       */
+/*   Updated: 2025/01/23 16:15:24 by fpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "splitter.h"
 
-void	add_sep(t_splitter *splitter, char **seps, size_t *i, char **splitted)
+void	add_sep(t_splitter *splitter, char *sep, size_t *i, char **splitted)
 {
-	int		j;
 	int		e;
 	size_t	len_sep;
 	char	*s;
 
 	s = splitter->s;
-	j = 0;
-	while (seps[j])
+	len_sep = ft_strlen(sep);
+	if (!ft_isemptystr(sep))
 	{
-		len_sep = ft_strlen(seps[j]);
-		if (!ft_strncmp(&s[*i], seps[j], len_sep))
-		{
-			if (!ft_isemptystr(seps[j]))
-			{
-				e = ft_count_2dchar_null_ended(splitted);
-				splitted[e] = ft_strdup(seps[j]);
-				check_malloc(splitter, splitted, splitted[e]);
-			}
-			*i += len_sep;
-		}
-		j++;
+		e = ft_count_2dchar_null_ended(splitted);
+		splitted[e] = ft_strdup(sep);
+		check_malloc(splitter, splitted, splitted[e]);
 	}
+	*i += len_sep;
 }
 
 void	count_sep(char *sep, size_t *i, int *count)

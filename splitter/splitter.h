@@ -6,7 +6,7 @@
 /*   By: fpetit <fpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 13:57:27 by fpetit            #+#    #+#             */
-/*   Updated: 2025/01/22 18:48:20 by fpetit           ###   ########.fr       */
+/*   Updated: 2025/01/23 16:13:05 by fpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void		count_sep(char *sep, size_t *i, int *count);
 void		count_delim(t_splitter *splitter, t_delimiter **delims, \
 				size_t *i, int *count);
 
-void		add_sep(t_splitter *splitter, char **seps, size_t *i, \
+void		add_sep(t_splitter *splitter, char *sep, size_t *i, \
 				char **splitted);
 void		add_elem(t_splitter *splitter, char **splitted, int len, size_t *i);
 void		add_in_delim(t_splitter *splitter, char **splitted, size_t *i);

@@ -6,7 +6,7 @@
 /*   By: fpetit <fpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 16:27:06 by fpetit            #+#    #+#             */
-/*   Updated: 2025/01/22 18:47:15 by fpetit           ###   ########.fr       */
+/*   Updated: 2025/01/23 16:12:50 by fpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ static void	*fill_splitted(t_splitter *splitter, char **seps, \
 	{
 		while (s[i] && get_sep(&s[i], seps))
 		{
-			add_sep(splitter, seps, &i, splitted);
+			add_sep(splitter, get_sep(&s[i], seps), &i, splitted);
 		}
 		while (s[i] && get_delimiter(&s[i], delims, 'a'))
 			add_in_delim(splitter, splitted, &i);
