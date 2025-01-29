@@ -6,7 +6,7 @@
 /*   By: fpetit <fpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 14:09:00 by fpetit            #+#    #+#             */
-/*   Updated: 2025/01/23 16:15:24 by fpetit           ###   ########.fr       */
+/*   Updated: 2025/01/27 18:47:22 by fpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,17 @@ void	count_sep(char *sep, size_t *i, int *count)
 		*count += 1;
 	len = ft_strlen(sep);
 	*i += len;
+}
+
+char	*get_sep_not_space(char *s, char **seps)
+{
+	char *sep;
+
+	sep = get_sep(s, seps);
+	if (!ft_strcmp(sep, " "))
+		return (NULL);
+	else
+		return (sep);
 }
 
 char	*get_sep(char *s, char **seps)

@@ -6,7 +6,7 @@
 /*   By: fpetit <fpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 13:57:27 by fpetit            #+#    #+#             */
-/*   Updated: 2025/01/23 16:13:05 by fpetit           ###   ########.fr       */
+/*   Updated: 2025/01/27 18:47:58 by fpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ bool		is_outside_delims(t_delimiter **delims);
 bool		can_split_delim(t_delimiter **delims, t_delimiter *delim);
 
 char		*get_sep(char *s, char **seps);
+char		*get_sep_not_space(char *s, char **seps);
 
 void		count_word(t_splitter *splitter, size_t *i, int *count);
 void		count_sep(char *sep, size_t *i, int *count);

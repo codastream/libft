@@ -6,7 +6,7 @@
 /*   By: fpetit <fpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 16:27:06 by fpetit            #+#    #+#             */
-/*   Updated: 2025/01/23 16:12:50 by fpetit           ###   ########.fr       */
+/*   Updated: 2025/01/28 15:57:42 by fpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	count_word(t_splitter *splitter, size_t *i, int *count)
 	len = 0;
 	while (s[*i + len] && is_outside_delims(splitter->delims) \
 		&& !get_delimiter(&s[*i + len], splitter->delims, 'a') \
-		&& !get_sep(&s[*i + len], splitter->seps))
+		&& !get_sep_not_space(&s[*i + len], splitter->seps))
 		len++;
 	if (len > 0)
 	{
@@ -50,7 +50,7 @@ void	add_word_outside_delims(t_splitter *splitter, size_t *i, \
 	len = 0;
 	while (s[*i + len] && is_outside_delims(splitter->delims) \
 		&& !get_delimiter(&s[*i + len], splitter->delims, 'a') \
-		&& !get_sep(&s[*i + len], splitter->seps))
+		&& !get_sep_not_space(&s[*i + len], splitter->seps))
 		len++;
 	if (len > 0)
 	{
