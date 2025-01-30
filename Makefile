@@ -11,16 +11,26 @@ ifdef FPIE
 	CFLAGS += -fPIE
 endif
 
-SRC_DIR:=		./
-HEADER_DIR:=	./
-INCLUDE_DIR:= 	./includes
+SRC_DIR:=		srcs
+INCLUDE_DIR:= 	includes
 LIBFT_DIR:=		libft
-OBJ_DIR:= 		./
+BUILD_DIR:= 	.build
 
-SRCS_FILES =	array/ft_has_unique_values_array.c\
-				array/ft_quick_sort.c\
-				array/ft_count_2dchar_null_ended.c\
-				array/ft_count_3dchar_null_ended.c\
+SRCS_FILES =	data/array/ft_has_unique_values_array.c\
+				data/array/ft_quick_sort.c\
+				data/array/ft_count_2dchar_null_ended.c\
+				data/array/ft_count_3dchar_null_ended.c\
+				data/hash/hash_print.c\
+				data/hash/hash.c\
+				data/list/ft_lstadd_back.c\
+				data/list/ft_lstadd_front.c\
+				data/list/ft_lstclear.c\
+				data/list/ft_lstdelone.c\
+				data/list/ft_lstiter.c\
+				data/list/ft_lstlast.c\
+				data/list/ft_lstmap.c\
+				data/list/ft_lstnew.c\
+				data/list/ft_lstsize.c\
 				conversion/ft_atoi_base.c\
 				conversion/ft_hextoi.c\
 				conversion/ft_atoi.c\
@@ -31,19 +41,8 @@ SRCS_FILES =	array/ft_has_unique_values_array.c\
 				conversion/ft_itoa.c\
 				conversion/ft_ltoa.c\
 				conversion/ft_lutoa_base.c\
-				data/hash_print.c\
-				data/hash.c\
 				gnl/get_next_line.c\
 				gnl/get_next_line_utils.c\
-				list/ft_lstadd_back.c\
-				list/ft_lstadd_front.c\
-				list/ft_lstclear.c\
-				list/ft_lstdelone.c\
-				list/ft_lstiter.c\
-				list/ft_lstlast.c\
-				list/ft_lstmap.c\
-				list/ft_lstnew.c\
-				list/ft_lstsize.c\
 				math/ft_isprime.c\
 				math/ft_iseven.c\
 				mem/ft_bzero.c\
@@ -112,23 +111,36 @@ SRCS_FILES =	array/ft_has_unique_values_array.c\
 				string/ft_toupper.c\
 				string/ft_tolower.c\
 
-SRCS:= $(addprefix $(SRC_DIR), $(SRCS_FILES))
-OBJS:= $(SRCS:.c=.o)
+SRCS:=			$(addprefix $(SRC_DIR)/, $(SRCS_FILES))
 
-#=========#
-# TARGETS #
-#=========#
+#=============================OBJECTS===========================#
+
+OBJS:=			${SRCS:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o}
+
+#=============================INCLUDES==========================#
+
+INC:=			-I$(INCLUDE_DIR) -I splitter/splitter.h
+
+#================================DIR============================#
+
+DIRS:=			$(sort $(shell dirname $(OBJS))) #no duplicates
+
+#=============================TARGETS===========================#
 
 all: $(NAME)
+
+$(DIRS):
+	@mkdir -p $@
 
 $(NAME): $(OBJS)
 	@ar rcs $(NAME) $(OBJS)
 
-%.o: %.c
-	@$(CC) $(CFLAGS) -I $(HEADER_DIR) -c $^ -o $@
+$(BUILD_DIR)/%.o: $(SRC_DIR)/%.c | $(DIRS)
+	@mkdir -p $(BUILD_DIR)
+	@$(CC) $(CFLAGS) $(INC) -c $^ -o $@
 
 clean:
-	@rm -f $(OBJS)
+	@rm -rf $(BUILD_DIR)
 
 fclean: clean
 	@rm -f $(NAME)
