@@ -20,7 +20,7 @@ SRCS_FILES =	data/array/ft_has_unique_values_array.c\
 				data/array/ft_quick_sort.c\
 				data/array/ft_count_2dchar_null_ended.c\
 				data/array/ft_count_3dchar_null_ended.c\
-				data/hash/hash_print.c\
+				data/hash/hash_util.c\
 				data/hash/hash.c\
 				data/list/ft_lstadd_back.c\
 				data/list/ft_lstadd_front.c\
