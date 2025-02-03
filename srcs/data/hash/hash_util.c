@@ -28,6 +28,7 @@ unsigned int	hashcode(t_hash *hash, char *key)
 	while (i < key_len)
 	{
 		value = value * 31 + key[i];
+		i++;
 	}
 	return (value % hash->capacity);
 }

@@ -41,6 +41,18 @@ t_hash	*ft_hash_init(int size)
 	return (hash);
 }
 
+int	ft_hash_update(t_hash *hash, char *key, void *new_value)
+{
+	unsigned int	index;
+	t_keyval		*current;
+
+	index = hashcode(hash, key);
+	if (!hash->keyvals[index])
+		return (EXIT_FAILURE);
+	current = hash->keyvals[index];
+	current->value = new_value;
+}
+
 /*
  * returns 0 if the value has been inserted for this key
  */
