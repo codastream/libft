@@ -51,6 +51,7 @@ int	ft_hash_update(t_hash *hash, char *key, void *new_value)
 		return (EXIT_FAILURE);
 	current = hash->keyvals[index];
 	current->value = new_value;
+	return (EXIT_SUCCESS);
 }
 
 /*
