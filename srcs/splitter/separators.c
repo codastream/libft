@@ -16,9 +16,7 @@ void	add_sep(t_splitter *splitter, char *sep, size_t *i, char **splitted)
 {
 	int		e;
 	size_t	len_sep;
-	char	*s;
 
-	s = splitter->s;
 	len_sep = ft_strlen(sep);
 	if (!ft_isemptystr(sep))
 	{

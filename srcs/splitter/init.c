@@ -42,13 +42,11 @@ t_delimiter	**init_quote_delimiters(void)
 {
 	t_delimiter	**delims;
 	int			nb_delims;
-	int			i;
 
 	nb_delims = 2;
 	delims = ft_calloc(nb_delims + 1, sizeof(t_delimiter *));
 	if (!delims)
 		return (NULL);
-	i = 0;
 	delims[0] = new_delimiter("\"", "\"");
 	delims[1] = new_delimiter("'", "'");
 	delims[2] = NULL;
