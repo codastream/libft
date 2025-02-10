@@ -67,16 +67,21 @@ void	ft_free_hashtable(t_hash *hash)
 	i = 0;
 	while (i < hash->capacity)
 	{
-		current = hash->keyvals[i];
-		while (current)
+		if (hash->keyvals[i])
 		{
-			tmp = current;
-			current = current->next;
-			free(tmp->key);
-			free(tmp);
+			current = hash->keyvals[i];
+			while (current)
+			{
+				tmp = current;
+				current = current->next;
+				free(tmp->key);
+				free(tmp->value);
+				free(tmp);
+			}
 		}
 		i++;
 	}
+	free(hash->keyvals);
 	free(hash);
 }
 
