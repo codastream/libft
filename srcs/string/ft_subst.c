@@ -18,32 +18,51 @@ int	count_nb_of_to_replace(char *s, char *to_replace)
 	char	*found;
 	size_t	len_to_r;
 
+	found = s;
 	count = 0;
 	len_to_r = ft_strlen(to_replace);
-	while (ft_strnstr(found, to_replace, len_to_r))
+	while (found && ft_strnstr(found, to_replace, len_to_r))
 	{
 		found = ft_strnstr(found, to_replace, len_to_r);
 		count++;
+		found += len_to_r;
 	}
 	return (count);
+}
+
+void	copy(char *dest, char *src, int *i, int *j)
+{
+	dest[*j] = src[*i];
+	(*j)++;
+	(*i)++;
 }
 
 void	replace_str(char *s, char *replaced, char *to_replace, \
 		char *replacement)
 {
 	int		i;
+	int		j;
 	size_t	len_to_r;
+	size_t	len_r;
 
 	len_to_r = ft_strlen(to_replace);
-	while (!ft_strncmp(s, to_replace, len_to_r))
-	{
-		ft_strcat(replaced, replacement);
-		s += len_to_r;
-	}
+	len_r = ft_strlen(replacement);
 	i = 0;
-	while (ft_strncmp(s, to_replace, len_to_r))
-		i++;
-	ft_strlcat(replaced, s, i);
+	j = 0;
+	while (s[i])
+	{
+		while (s[i] && ft_strncmp((const char *)&s[i], to_replace, len_to_r) != 0)
+			copy(replaced, s, &i, &j);
+		replaced[j] = '\0';
+		while (s[i] && !ft_strncmp((const char*)&s[i], to_replace, len_to_r))
+		{
+			ft_strcat(replaced, replacement);
+			i += len_to_r;
+			j += len_r;
+		}
+	}
+	if (replaced[j] != '\0')
+		replaced[j] = '\0';
 }
 
 char	*ft_subst(char *s, char *to_replace, char *replacement)
@@ -62,10 +81,6 @@ char	*ft_subst(char *s, char *to_replace, char *replacement)
 		(len_r * count_occ) + 1, sizeof(char));
 	if (!replaced)
 		return (NULL);
-	while (*s)
-	{
-		replace_str(s, replaced, to_replace, replacement);
-	}
-	*replaced = '\0';
+	replace_str(s, replaced, to_replace, replacement);
 	return (replaced);
 }

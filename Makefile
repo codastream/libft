@@ -108,6 +108,7 @@ SRCS_FILES =	data/array/ft_has_unique_values_array.c\
 				string/ft_strrchr.c\
 				string/ft_strtrim.c\
 				string/ft_substr.c\
+				string/ft_subst.c\
 				string/ft_toupper.c\
 				string/ft_tolower.c\
 
