@@ -19,6 +19,7 @@ unsigned int		hashcode(t_hash *hash, char *key);
 t_keyval			*new_node(char *key, void *value);
 void				ft_print_hashstr(t_hash *hash);
 void				ft_hash_reset(t_hash *hash);
+void				ft_free_hashtable(t_hash *hash);
 
 t_hash				*ft_hash_init(int size);
 int					ft_hash_insert(t_hash *hash, char *key, void *value);
