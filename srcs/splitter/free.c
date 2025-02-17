@@ -42,7 +42,9 @@ void	free_splitted(char **splitted)
 
 void	free_splitter(t_splitter *splitter)
 {
-	if (splitter->delims)
+	if (!splitter)
+    return ;
+  if (splitter->delims)
 		free_delimiters(splitter->delims);
 	free(splitter);
 }
