@@ -18,14 +18,17 @@ int	count_nb_of_to_replace(char *s, char *to_replace)
 	char	*found;
 	size_t	len_to_r;
 
+	if (!s || !to_replace)
+		return (0);
 	found = s;
 	count = 0;
 	len_to_r = ft_strlen(to_replace);
-	while (found && ft_strnstr(found, to_replace, len_to_r))
+	while (found && ft_strstr(found, to_replace))
 	{
-		found = ft_strnstr(found, to_replace, len_to_r);
 		count++;
-		found += len_to_r;
+		found = ft_strstr(found, to_replace);
+		if (found)
+			found += len_to_r;
 	}
 	return (count);
 }
@@ -73,9 +76,13 @@ char	*ft_subst(char *s, char *to_replace, char *replacement)
 	int		count_occ;
 	char	*replaced;
 
+	if (!s)
+		return (NULL);
+	if (!to_replace)
+		return (s);
+	len_s = ft_strlen(s);
 	len_to_r = ft_strlen(to_replace);
 	len_r = ft_strlen(replacement);
-	len_s = ft_strlen(s);
 	count_occ = count_nb_of_to_replace(s, to_replace);
 	replaced = ft_calloc(len_s - (len_to_r * count_occ) + \
 		(len_r * count_occ) + 1, sizeof(char));

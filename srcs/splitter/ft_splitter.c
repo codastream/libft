@@ -90,7 +90,8 @@ char	**ft_split_skip(const char *str, char **seps)
 {
 	t_splitter	*splitter;
 	char		**splitted;
-
+	if (!str)
+		return (NULL);
 	splitter = init_splitter(str, seps);
 	splitted = init_splitted(splitter, splitter->s, splitter->seps, \
 		splitter->delims);
