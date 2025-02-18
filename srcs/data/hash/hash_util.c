@@ -76,7 +76,7 @@ void	ft_free_hashtable(t_hash *hash)
 			{
 				tmp = current;
 				current = current->next;
-				free_keyval(current);
+				free_keyval(tmp);
 			}
 		}
 		i++;
