@@ -33,7 +33,7 @@ unsigned int	hashcode(t_hash *hash, char *key)
 	return (value % hash->capacity);
 }
 
-t_keyval *new_node(char *key, void *value)
+t_keyval *new_node(char *key, char *value)
 {
 	t_keyval	*keyval;
 
@@ -41,7 +41,7 @@ t_keyval *new_node(char *key, void *value)
 	if (!keyval)
 		return (NULL);
 	keyval->key = ft_strdup(key);
-	keyval->value = value;
+	keyval->value = ft_strdup(value);
 	keyval->next = NULL;
 	return (keyval);
 }
@@ -57,7 +57,9 @@ void	ft_hash_reset(t_hash *hash)
 		i++;
 	}
 }
-
+/*
+ * will consider values have been allocated
+ */
 void	ft_free_hashtable(t_hash *hash)
 {
 	int			i;
@@ -74,9 +76,7 @@ void	ft_free_hashtable(t_hash *hash)
 			{
 				tmp = current;
 				current = current->next;
-				free(tmp->key);
-				free(tmp->value);
-				free(tmp);
+				free_keyval(current);
 			}
 		}
 		i++;

@@ -40,8 +40,10 @@ t_hash	*ft_hash_init(int size)
 	ft_hash_reset(hash);
 	return (hash);
 }
-
-int	ft_hash_update(t_hash *hash, char *key, void *new_value)
+/*
+ * use only if value has previously been set
+ */
+int	ft_hash_update(t_hash *hash, char *key, char *new_value)
 {
 	unsigned int	index;
 	t_keyval		*current;
@@ -50,19 +52,22 @@ int	ft_hash_update(t_hash *hash, char *key, void *new_value)
 	if (!hash->keyvals[index])
 		return (EXIT_FAILURE);
 	current = hash->keyvals[index];
-	current->value = new_value;
+	free(current->value);
+	current->value = ft_strdup(new_value);
 	return (EXIT_SUCCESS);
 }
 
 /*
  * returns 0 if the value has been inserted for this key
  */
-int	ft_hash_insert(t_hash *hash, char *key, void *value)
+int	ft_hash_insert(t_hash *hash, char *key, char *value)
 {
 	unsigned int	index;
 	t_keyval		*new_keyval;
 	t_keyval		*current;
 
+	if (!key)
+		return (EXIT_FAILURE);
 	new_keyval = new_node(key, value);
 	index = hashcode(hash, key);
 	if (!hash->keyvals[index])
@@ -83,7 +88,7 @@ int	ft_hash_insert(t_hash *hash, char *key, void *value)
  * and with matching key
  * returns NULL if not found
  */
-void	*ft_hash_get(t_hash *hash, char *key)
+char	*ft_hash_get(t_hash *hash, char *key)
 {
 	unsigned int	index;
 	t_keyval		*current;
@@ -102,6 +107,7 @@ void	*ft_hash_get(t_hash *hash, char *key)
 void	free_keyval(t_keyval *keyval)
 {
 	free(keyval->key);
+	free(keyval->value);
 	free(keyval);
 }
 
