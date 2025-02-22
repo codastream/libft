@@ -17,6 +17,8 @@ char	*ft_strchr(const char *s, int c)
 	unsigned char	*s_pointer;
 	int				mc;
 
+	if (!s)
+		return (NULL);
 	mc = c % 256;
 	s_pointer = (unsigned char *) s;
 	while (*s_pointer)

@@ -25,12 +25,12 @@ char	*ft_strtrim(char const *s1, char const *set)
 	if (len == 0)
 		return (ft_calloc(sizeof(char), 1));
 	i = 0;
-	while (ft_strchr(set, s1[i]))
+	while (s1[i] && ft_strchr(set, s1[i]))
 		i++;
 	if (i > len)
 		return (ft_calloc(sizeof(char), 1));
 	j = len - 1;
-	while (ft_strchr(set, s1[j]))
+	while (j > 0 && s1[j] && ft_strchr(set, s1[j]))
 		j--;
 	len_trim = j + 1 - i;
 	return (ft_substr(s1, i, len_trim));
