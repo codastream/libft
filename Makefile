@@ -38,6 +38,7 @@ SRCS_FILES =	data/array/ft_has_unique_values_array.c\
 				conversion/ft_atoull.c\
 				conversion/ft_convert_base.c\
 				conversion/ft_is_out_of_int_range.c\
+				conversion/ft_is_atoistr.c\
 				conversion/ft_itoa.c\
 				conversion/ft_ltoa.c\
 				conversion/ft_lutoa_base.c\

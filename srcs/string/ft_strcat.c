@@ -19,7 +19,7 @@ char	*ft_strcat(char *dest, char *src)
 
 	len_dest = ft_strlen(dest);
 	i = 0;
-	while (src[i])
+	while (src && src[i])
 	{
 		dest[len_dest + i] = src[i];
 		i++;
