@@ -12,6 +12,20 @@
 
 #include "splitter.h"
 
+t_delimiter	*new_delimiter(char *opening, char *closing)
+{
+	t_delimiter	*new;
+
+	new = ft_calloc(1, sizeof(t_delimiter));
+	if (!new)
+		return (NULL);
+	new->opening = ft_strdup(opening);
+	new->closing = ft_strdup(closing);
+	new->level = 0;
+	new->is_closed = true;
+	return (new);
+}
+
 void	reset_delim_close_status(t_delimiter **delims)
 {
 	int		i;
@@ -24,7 +38,22 @@ void	reset_delim_close_status(t_delimiter **delims)
 	}
 }
 
-t_splitter	*init_splitter(const char *str, char **seps, t_delimiter **ignore_delimiters)
+t_delimiter	**init_quote_delimiters(void)
+{
+	t_delimiter	**delims;
+	int			nb_delims;
+
+	nb_delims = 2;
+	delims = ft_calloc(nb_delims + 1, sizeof(t_delimiter *));
+	if (!delims)
+		return (NULL);
+	delims[0] = new_delimiter("\"", "\"");
+	delims[1] = new_delimiter("'", "'");
+	delims[2] = NULL;
+	return (delims);
+}
+
+t_splitter	*init_splitter(const char *str, char **seps, char **ignore_delimiters)
 {
 	t_splitter	*splitter;
 
@@ -47,7 +76,6 @@ char	**init_splitskipped(t_splitter *splitter, char *s, char **seps, \
 	int			count;
 	size_t		i;
 	char		**splitted;
-	size_t		word_len;
 
 	if (!s)
 		return (NULL);
@@ -59,17 +87,9 @@ char	**init_splitskipped(t_splitter *splitter, char *s, char **seps, \
 		{
 			count_sep(get_sep(&s[i], seps), &i, &count);
 		}
-		word_len = i;
-		while (s[word_len] && !get_sep(&s[word_len], seps))
-		{
-			while (get_delimiter(&s[word_len], delims, 'a'))
-				go_to_end_of_delim_count(splitter, delims, &word_len, &count);
-			while (s[word_len] && !get_sep(&s[word_len], seps) && !get_delimiter(&s[word_len], delims, 'a'))
-				word_len++;
-		}
-		if (word_len > i)
-			count++;
-		i = word_len;
+		while (s[i] && get_delimiter(&s[i], delims, 'a'))
+			go_to_end_of_delim_count(splitter, delims, &i, &count);
+		count_word(splitter, &i, &count);
 	}
 	splitted = (char **)ft_calloc(count + 1, sizeof(char *));
 	if (!splitted)

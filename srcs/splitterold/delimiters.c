@@ -28,7 +28,7 @@ int	count_len_till_closing_delim(char *s, t_delimiter *delim)
 
 void	count_elem(size_t *i, int len, int *count)
 {
-	*count += 0;
+	*count += 1;
 	*i += len + 1;
 }
 
@@ -40,7 +40,6 @@ void	go_to_end_of_delim_count(t_splitter *splitter, t_delimiter **delims, size_t
 	int			len_delim_token;
 	char		*s;
 
-	(void) count;
 	s = splitter->s;
 	opening_delim = get_delimiter(&s[*i], delims, 'o');
 	closing_delim = get_delimiter(&s[*i], delims, 'c');
@@ -48,16 +47,18 @@ void	go_to_end_of_delim_count(t_splitter *splitter, t_delimiter **delims, size_t
 	{
 		if (is_outside_delims(delims))
 		{
+			opening_delim->is_closed = false;
 			len_delim_token = count_len_till_closing_delim(&s[*i], \
 				opening_delim);
 			if (len_delim_token > 0)
-				*i += len_delim_token + 1;
+				count_elem(i, len_delim_token, count);
+			opening_delim->is_closed = true;
 		}
 		else
-			*i += ft_strlen(opening_delim->opening);
+			count_elem(i, ft_strlen(opening_delim->opening), count);
 	}
 	else if (closing_delim)
-		*i += ft_strlen(closing_delim->closing);
+		count_elem(i, ft_strlen(closing_delim->closing), count);
 }
 
 void	go_to_end_of_delim(t_splitter *splitter, char **splitted, size_t *i)
@@ -66,23 +67,24 @@ void	go_to_end_of_delim(t_splitter *splitter, char **splitted, size_t *i)
 	t_delimiter	*closing_delim;
 	int			len_delim_token;
 
-	(void) splitted;
 	opening_delim = get_delimiter(&splitter->s[*i], splitter->delims, 'o');
 	closing_delim = get_delimiter(&splitter->s[*i], splitter->delims, 'c');
 	if (opening_delim)
 	{
 		if (is_outside_delims(splitter->delims))
 		{
+			opening_delim->is_closed = false;
 			len_delim_token = count_len_till_closing_delim(&splitter->s[*i], \
 				opening_delim);
 			if (len_delim_token > 0)
-				*i += len_delim_token + 1;
+				add_elem(splitter, splitted, len_delim_token, i);
+			opening_delim->is_closed = true;
 		}
 		else
-			*i += ft_strlen(opening_delim->opening);
+			add_elem(splitter, splitted, ft_strlen(opening_delim->opening), i);
 	}
 	else if (closing_delim)
 	{
-		*i += ft_strlen(closing_delim->closing);
+		add_elem(splitter, splitted, ft_strlen(closing_delim->closing), i);
 	}
 }

@@ -34,8 +34,8 @@ typedef struct s_splitter
 }	t_splitter;
 
 t_delimiter	**init_quote_delimiters(void);
-t_splitter	*init_splitter(const char *str, char **seps);
-char		**init_splitted(t_splitter *splitter, char *s, char **seps, \
+t_splitter	*init_splitter(const char *str, char **seps, t_delimiter **delimiters);
+char		**init_splitskipped(t_splitter *splitter, char *s, char **seps, \
 				t_delimiter **delims);
 void		reset_delim_close_status(t_delimiter **delims);
 
@@ -55,12 +55,12 @@ char		*get_sep_not_space(char *s, char **seps);
 
 void		count_word(t_splitter *splitter, size_t *i, int *count);
 void		count_sep(char *sep, size_t *i, int *count);
-void		count_delim(t_splitter *splitter, t_delimiter **delims, \
+void		go_to_end_of_delim_count(t_splitter *splitter, t_delimiter **delims, \
 				size_t *i, int *count);
 
 void		add_sep(t_splitter *splitter, char *sep, size_t *i, \
 				char **splitted);
 void		add_elem(t_splitter *splitter, char **splitted, int len, size_t *i);
-void		add_in_delim(t_splitter *splitter, char **splitted, size_t *i);
+void		go_to_end_of_delim(t_splitter *splitter, char **splitted, size_t *i);
 
 #endif

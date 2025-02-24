@@ -16,12 +16,10 @@ void	add_elem(t_splitter *splitter, char **splitted, int len, size_t *i)
 {
 	int	e;
 
-	if (!(len > 0))
-		return ;
 	e = ft_count_2dchar_null_ended(splitted);
-	splitted[e] = ft_substr(splitter->s, *i, len);
+	splitted[e] = ft_substr(splitter->s, *i, len + 1);
 	check_malloc(splitter, splitted, splitted[e]);
-	*i += len;
+	*i += len + 1;
 }
 
 void	count_word(t_splitter *splitter, size_t *i, int *count)
@@ -64,10 +62,8 @@ static void	*fill_splitted(t_splitter *splitter, char **seps, \
 	t_delimiter **delims, char **splitted)
 {
 	int		e;
-	size_t	word_len;
 	size_t	i;
 	char	*s;
-	int		len;
 
 	i = 0;
 	e = 0;
@@ -78,24 +74,19 @@ static void	*fill_splitted(t_splitter *splitter, char **seps, \
 		{
 			add_sep(splitter, get_sep(&s[i], seps), &i, splitted);
 		}
-		word_len = i;
-		while (s[word_len] && !get_sep(&s[word_len], seps))
-		{
-			while (get_delimiter(&s[word_len], delims, 'a'))
-				go_to_end_of_delim(splitter, splitted, &word_len);
- 			while (s[word_len] && !get_sep(&s[word_len], seps) && !get_delimiter(&s[word_len], delims, 'a'))
-				word_len++;				// i = word_len;
-		}
-		len = word_len - i;
-		add_elem(splitter, splitted, len, &i);
+		while (s[i] && get_delimiter(&s[i], delims, 'a'))
+			go_to_end_of_delim(splitter, splitted, &i);
+		add_word_outside_delims(splitter, &i, splitted);
 	}
+	e = ft_count_2dchar_null_ended(splitted);
+	splitted[e] = NULL;
 	return (splitted);
 }
 
 /*
  * requires that all literal delimiters (quotes) are closed
  */
-char	**ft_split_skip(const char *str, char **seps, t_delimiter **ignore_delimiters)
+char	**ft_split_skip(const char *str, char **seps, )
 {
 	t_splitter	*splitter;
 	char		**splitted;
