@@ -63,14 +63,12 @@ void	add_word_outside_delims(t_splitter *splitter, size_t *i, \
 static void	*fill_splitted(t_splitter *splitter, char **seps, \
 	t_delimiter **delims, char **splitted)
 {
-	int		e;
 	size_t	word_len;
 	size_t	i;
 	char	*s;
 	int		len;
 
 	i = 0;
-	e = 0;
 	s = splitter->s;
 	while (s[i])
 	{
