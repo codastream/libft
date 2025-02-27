@@ -37,6 +37,8 @@ int	ft_atoi(const char *nptr)
 	int		neg;
 	long	result;
 
+	if (!nptr)
+		return (0);
 	skip_blanks(&nptr);
 	neg = check_neg(&nptr);
 	result = 0;

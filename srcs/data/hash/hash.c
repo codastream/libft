@@ -52,8 +52,18 @@ int	ft_hash_update(t_hash *hash, char *key, char *new_value)
 	if (!hash->keyvals[index])
 		return (EXIT_FAILURE);
 	current = hash->keyvals[index];
-	free(current->value);
-	current->value = ft_strdup(new_value);
+	while (current)
+	{
+		if (!ft_strcmp(current->key, key))
+		{
+			free(current->value);
+			current->value = ft_strdup(new_value);
+			return (EXIT_SUCCESS);
+		}
+		current = current->next;
+	}
+	if (!current)
+		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
 
