@@ -19,9 +19,9 @@ bool	is_atoi_str(char *str)
 	if (!ft_isnumstr(&str[i]))
 		return (false);
 	if (i > 0 && str[i - 1] == '-')
-		return (!ft_is_out_of_int_range(&str[i - 1]));
+		return (true);
 	else
-		return (!ft_is_out_of_int_range(&str[i]));
+		return (true);
 }
 
 /*

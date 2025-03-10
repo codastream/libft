@@ -84,6 +84,7 @@ SRCS_FILES =	data/array/ft_has_unique_values_array.c\
 				splitter/separators.c\
 				string/ft_isalpha.c\
 				string/ft_isalnum.c\
+				string/ft_isalnumstr.c\
 				string/ft_isdigit.c\
 				string/ft_isemptystr.c\
 				string/ft_isascii.c\
@@ -96,6 +97,7 @@ SRCS_FILES =	data/array/ft_has_unique_values_array.c\
 				string/ft_strdup.c\
 				string/ft_striteri.c\
 				string/ft_strjoin.c\
+				string/ft_strjoinfree.c\
 				string/ft_strlcat.c\
 				string/ft_strlcpy.c\
 				string/ft_strlen.c\
