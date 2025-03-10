@@ -13,6 +13,7 @@ char				*ft_lutoa_base(unsigned long long n, char *base);
 bool				is_valid_number_for_base(char *nbr, char *base);
 bool				is_valid_base(char *base);
 bool				is_atoi_str(char *str);
+bool				is_atoll_str(char *str);
 int					ft_hextoi(const char *nb);
 
 # endif

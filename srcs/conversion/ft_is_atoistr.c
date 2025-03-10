@@ -23,3 +23,23 @@ bool	is_atoi_str(char *str)
 	else
 		return (!ft_is_out_of_int_range(&str[i]));
 }
+
+/*
+ * imperfect for negative numb
+ */
+bool	is_atoll_str(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] == ' ')
+		i++;
+	if (str[i] == '+' || str[i] == '-')
+		i++;
+	if (!ft_isnumstr(&str[i]))
+		return (false);
+	if (i > 0 && str[i - 1] == '-')
+		return (ft_strlen(&str[i]) <= 19);
+	else
+		return (ft_atoull(&str[i]) <= LLONG_MAX);
+}

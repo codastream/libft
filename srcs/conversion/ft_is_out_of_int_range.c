@@ -18,3 +18,4 @@ bool	ft_is_out_of_int_range(char *nb)
 		return (true);
 	return (false);
 }
+
