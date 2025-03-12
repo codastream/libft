@@ -39,7 +39,7 @@ bool	is_atoll_str(char *str)
 	if (!ft_isnumstr(&str[i]))
 		return (false);
 	if (i > 0 && str[i - 1] == '-')
-		return (ft_atoull(&str[i]) <= (unsigned long long)LLONG_MAX + 1);
+		return (ft_strlen(&str[i]) <= 19);
 	else
 		return (ft_atoull(&str[i]) <= LLONG_MAX);
 }

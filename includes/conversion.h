@@ -4,6 +4,7 @@
 int					ft_atoi_base(char *nbr, char *base);
 int					ft_atoi(const char *nptr);
 long				ft_atol(const char *nptr);
+long long			ft_atoll(const char *nptr);
 unsigned long long	ft_atoull(const char *nptr);
 char				*ft_convert_base(char *nbr, char *base_from, char *base_to);
 bool				ft_is_out_of_int_range(char *nb);
