@@ -35,8 +35,10 @@ static int	check_neg(const char **nptr)
 long long	ft_atoll(const char *nptr)
 {
 	int			neg;
-	long long	result;
+	unsigned long long	result;
 
+	if (!nptr)
+		return (0);
 	skip_blanks(&nptr);
 	neg = check_neg(&nptr);
 	result = 0;
@@ -46,5 +48,5 @@ long long	ft_atoll(const char *nptr)
 		result += (*nptr - '0');
 		nptr++;
 	}
-	return ((long)(neg * result));
+	return ((neg * (long long) result));
 }
