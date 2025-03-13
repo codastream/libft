@@ -93,6 +93,7 @@ SRCS_FILES =	data/array/ft_has_unique_values_array.c\
 				string/ft_isprint.c\
 				string/ft_split.c\
 				string/ft_split_str.c\
+				string/ft_split_index.c\
 				string/ft_strcat.c\
 				string/ft_strcmp.c\
 				string/ft_strdup.c\
@@ -113,6 +114,7 @@ SRCS_FILES =	data/array/ft_has_unique_values_array.c\
 				string/ft_strtrim.c\
 				string/ft_substr.c\
 				string/ft_subst.c\
+				string/ft_subst_first.c\
 				string/ft_toupper.c\
 				string/ft_tolower.c\
 

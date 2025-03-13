@@ -13,6 +13,7 @@ bool				ft_isnumstr(char *s);
 int					ft_isprint(int c);
 char				**ft_split(char const *s, char c);
 char				**ft_split_str(char const *s, char *charset);
+char				**split_index(char *s, int index);
 char				*ft_strcat(char *dest, char *src);
 char				*ft_strchr(const char *s, int c);
 int					ft_strchri(const char *s, unsigned char c);
@@ -38,5 +39,7 @@ char				*ft_substr(char const *s, unsigned int start, size_t len);
 int					ft_toupper(int c);
 int					ft_tolower(int c);
 char				*ft_subst(char *s, char *to_replace, char *replacement);
+char				*ft_subst_first(char *s, char *to_replace, \
+						char *replacement);
 
 # endif

@@ -19,5 +19,5 @@ int	ft_isalnum(int c)
 
 int	ft_ischarforenvvar(int c)
 {
-	return (ft_isalnum(c) || c == '?');
+	return (ft_isalnum(c) || c == '?' || c == '*');
 }
