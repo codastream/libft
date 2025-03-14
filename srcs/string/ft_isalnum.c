@@ -12,12 +12,16 @@
 
 #include "libft.h"
 
-int	ft_isalnum(int c)
+bool	ft_isalnum(int c)
 {
-	return (ft_isalpha(c) || ft_isdigit(c));
+	if (ft_isalpha(c) || ft_isdigit(c))
+		return (true);
+	return (false);
 }
 
-int	ft_ischarforenvvar(int c)
+bool	ft_ischarforenvvar(int c)
 {
-	return (ft_isalnum(c) || c == '?' || c == '*');
+	if (ft_isalnum(c) || c == '?' || c == '*')
+		return (true);
+	return (false);
 }
