@@ -97,6 +97,7 @@ SRCS_FILES =	data/array/ft_has_unique_values_array.c\
 				string/ft_strcat.c\
 				string/ft_strcmp.c\
 				string/ft_strdup.c\
+				string/ft_strndup.c\
 				string/ft_striteri.c\
 				string/ft_strjoin.c\
 				string/ft_strjoinfree.c\

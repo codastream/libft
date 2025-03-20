@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fpetit <fpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/09 10:45:29 by fpetit            #+#    #+#             */
+/*   Created: 2024/10/09 11:48:18 by fpetit            #+#    #+#             */
 /*   Updated: 2025/01/29 19:08:38 by fpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-bool	ft_isalnum(int c)
+char	*ft_strnduup(const char *s, size_t n)
 {
-	if (ft_isalpha(c) || ft_isdigit(c))
-		return (true);
-	return (false);
-}
+	int		len;
+	char	*duplicated;
 
-bool	ft_ischarforenvvar(int c)
-{
-	if (ft_isalnum(c) || c == '?' || c == '*')
-		return (true);
-	return (false);
+	if (!s)
+		return (malloc(0));
+	len = ft_strlen(s);
+	if (len > (int)n)
+		len = (int)n;
+	duplicated = malloc(sizeof(char) * (len + 1));
+	if (!duplicated)
+		return (NULL);
+	ft_memcpy(duplicated, s, len);
+	duplicated[len] = '\0';
+	return (duplicated);
 }

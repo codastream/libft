@@ -21,6 +21,7 @@ int					ft_strcharsi(char *str, char *searchedchars);
 int					ft_strstri(char *str, char **searched);
 int					ft_strcmp(const char *s1, const char *s2);
 char				*ft_strdup(const char *s);
+char				*ft_strnduup(const char *s, size_t n);
 void				ft_striteri(char *s, void (*f)(unsigned int, char*));
 char				*ft_multistrjoin(int size, char **strs, char *sep);
 char				*ft_strjoin(const char *s1, const char *s2);
