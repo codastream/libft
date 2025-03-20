@@ -21,7 +21,7 @@ bool	ft_isalnum(int c)
 
 bool	ft_ischarforenvvar(int c)
 {
-	if (ft_isalnum(c) || c == '?' || c == '*')
+	if (ft_isalnum(c) || c == '?' || c == '*' || c == '_')
 		return (true);
 	return (false);
 }
