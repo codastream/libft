@@ -10,6 +10,7 @@ int					ft_isdigit(int c);
 bool				ft_isemptychar(char c);
 bool				ft_isemptystr(char *s);
 bool				ft_isnumstr(char *s);
+bool				ft_is_upper(int c);
 int					ft_isprint(int c);
 char				**ft_split(char const *s, char c);
 char				**ft_split_str(char const *s, char *charset);

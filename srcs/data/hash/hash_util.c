@@ -41,7 +41,19 @@ t_keyval *new_node(char *key, char *value)
 	if (!keyval)
 		return (NULL);
 	keyval->key = ft_strdup(key);
-	keyval->value = ft_strdup(value);
+	if (!keyval->key)
+		return (NULL);
+	if (!value)
+	{
+		keyval->value = malloc(1);
+		keyval->value[0] = '\0';
+	}
+	else
+	{
+		keyval->value = ft_strdup(value);
+		if (!keyval->value)
+			return (NULL);
+	}
 	keyval->next = NULL;
 	return (keyval);
 }
