@@ -4,6 +4,7 @@
 bool				ft_isalnum(int c);
 int					ft_isalnumstr(char *c);
 bool				ft_ischarforenvvar(int c);
+bool				ft_isenvvarkeystr(char *s);
 int					ft_isalpha(int c);
 int					ft_isascii(int c);
 int					ft_isdigit(int c);

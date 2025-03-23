@@ -117,8 +117,11 @@ char	*ft_hash_get(t_hash *hash, char *key)
 void	free_keyval(t_keyval *keyval)
 {
 	free(keyval->key);
+	keyval->key = NULL;
 	free(keyval->value);
+	keyval->value = NULL;
 	free(keyval);
+	keyval = NULL;
 }
 
 /*
