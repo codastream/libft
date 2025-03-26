@@ -30,3 +30,19 @@ int	ft_strchri(const char *s, unsigned char c)
 		return (i);
 	return (-1);
 }
+
+int	ft_strrchri(const char *s, unsigned char c)
+{
+	int	i;
+
+	if (!s)
+		return (-1);
+	i = ft_strlen(s) - 1;
+	while (i >= 0)
+	{
+		if (s[i] == c)
+			return (i);
+		i--;
+	}
+	return (-1);
+}

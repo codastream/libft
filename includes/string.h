@@ -19,6 +19,7 @@ char				**split_index(char *s, int index);
 char				*ft_strcat(char *dest, char *src);
 char				*ft_strchr(const char *s, int c);
 int					ft_strchri(const char *s, unsigned char c);
+int					ft_strrchri(const char *s, unsigned char c);
 int					ft_strcharsi(char *str, char *searchedchars);
 int					ft_strstri(char *str, char **searched);
 int					ft_strcmp(const char *s1, const char *s2);
