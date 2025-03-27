@@ -6,15 +6,15 @@
 /*   By: fpetit <fpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 16:24:27 by fpetit            #+#    #+#             */
-/*   Updated: 2025/02/03 15:25:22 by fpetit           ###   ########.fr       */
+/*   Updated: 2025/03/27 14:36:50 by fpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	get_prime_above(int n)  // NOLINT
+static int	get_prime_above(int n)
 {
-	if (ft_is_even(n))  // NOLINT
+	if (ft_is_even(n))
 		n++;
 	while (!ft_is_prime(n))
 		n += 2;
@@ -43,6 +43,7 @@ t_hash	*ft_hash_init(int size)
 /*
  * use only if value has previously been set
  */
+
 int	ft_hash_update(t_hash *hash, char *key, char *new_value)
 {
 	unsigned int	index;
@@ -112,47 +113,4 @@ char	*ft_hash_get(t_hash *hash, char *key)
 		current = current->next;
 	}
 	return (NULL);
-}
-
-void	free_keyval(t_keyval *keyval)
-{
-	free(keyval->key);
-	keyval->key = NULL;
-	free(keyval->value);
-	keyval->value = NULL;
-	free(keyval);
-	keyval = NULL;
-}
-
-/*
- * returns 1 if no value for this key
- * returns 0 if has been deleted
- */
-int	ft_hash_remove(t_hash *hash, char *key)
-{
-	unsigned int	index;
-	t_keyval		*current;
-	t_keyval		*previous;
-
-	index = hashcode(hash, key);
-	previous = NULL;
-	current = hash->keyvals[index];
-	if (!current)
-		return (EXIT_FAILURE);
-	while (current)
-	{
-		if (!ft_strcmp(current->key, key))
-		{
-			if (!previous)
-				hash->keyvals[index] = current->next;
-			else
-				previous->next = current->next;
-			free_keyval(current);
-			hash->elements_nb--;
-			return (EXIT_SUCCESS);
-		}
-		previous = current;
-		current = current->next;
-	}
-	return (EXIT_FAILURE);
 }

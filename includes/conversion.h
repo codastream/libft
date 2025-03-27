@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   conversion.h                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fpetit <fpetit@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/27 14:24:38 by fpetit            #+#    #+#             */
+/*   Updated: 2025/03/27 14:25:51 by fpetit           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CONVERSION_H
 # define CONVERSION_H
 
@@ -17,4 +29,4 @@ bool				is_atoi_str(char *str);
 bool				is_atoll_str(char *str);
 int					ft_hextoi(const char *nb);
 
-# endif
+#endif

@@ -6,7 +6,7 @@
 /*   By: fpetit <fpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 10:45:29 by fpetit            #+#    #+#             */
-/*   Updated: 2025/01/29 19:08:38 by fpetit           ###   ########.fr       */
+/*   Updated: 2025/03/27 14:28:29 by fpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int	check_neg(const char **nptr)
 
 long long	ft_atoll(const char *nptr)
 {
-	int			neg;
+	int					neg;
 	unsigned long long	result;
 
 	if (!nptr)

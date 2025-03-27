@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hash_print.c                                       :+:      :+:    :+:   */
+/*   hash_util.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fpetit <fpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 16:24:27 by fpetit            #+#    #+#             */
-/*   Updated: 2025/01/29 19:08:38 by fpetit           ###   ########.fr       */
+/*   Updated: 2025/03/27 14:34:23 by fpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ unsigned int	hashcode(t_hash *hash, char *key)
 	return (value % hash->capacity);
 }
 
-t_keyval *new_node(char *key, char *value)
+t_keyval	*new_node(char *key, char *value)
 {
 	t_keyval	*keyval;
 
@@ -72,6 +72,7 @@ void	ft_hash_reset(t_hash *hash)
 /*
  * will consider values have been allocated
  */
+
 void	ft_free_hashtable(t_hash *hash)
 {
 	int			i;

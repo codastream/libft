@@ -1,43 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_subst.c                                         :+:      :+:    :+:   */
+/*   ft_subst_first.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fpetit <fpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 10:50:50 by fpetit            #+#    #+#             */
-/*   Updated: 2025/01/29 19:08:38 by fpetit           ###   ########.fr       */
+/*   Updated: 2025/03/27 14:51:26 by fpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-// int	count_nb_of_to_replace(char *s, char *to_replace)
-// {
-// 	int		count;
-// 	char	*found;
-// 	size_t	len_to_r;
-
-// 	if (!s || !to_replace)
-// 		return (0);
-// 	found = s;
-// 	count = 0;
-// 	len_to_r = ft_strlen(to_replace);
-// 	while (found && ft_strstr(found, to_replace))
-// 	{
-// 		count++;
-// 		found = ft_strstr(found, to_replace);
-// 		if (found)
-// 			found += len_to_r;
-// 	}
-// 	return (count);
-// }
 
 static void	copy(char *dest, char *src, int *i, int *j)
 {
 	dest[*j] = src[*i];
 	(*j)++;
 	(*i)++;
+}
+
+static void	add_string_final(char *s, int i)
+{
+	if (s[i] != '\0')
+		s[i] = '\0';
 }
 
 static void	replace_str(char *s, char *replaced, char *to_replace, \
@@ -54,10 +39,11 @@ static void	replace_str(char *s, char *replaced, char *to_replace, \
 	j = 0;
 	while (s[i])
 	{
-		while (s[i] && ft_strncmp((const char *)&s[i], to_replace, len_to_r) != 0)
+		while (s[i] && ft_strncmp((const char *)&s[i], to_replace, \
+			len_to_r) != 0)
 			copy(replaced, s, &i, &j);
 		replaced[j] = '\0';
-		if (s[i] && !ft_strncmp((const char*)&s[i], to_replace, len_to_r))
+		if (s[i] && !ft_strncmp((const char *)&s[i], to_replace, len_to_r))
 		{
 			ft_strcat(replaced, replacement);
 			i += len_to_r;
@@ -66,8 +52,7 @@ static void	replace_str(char *s, char *replaced, char *to_replace, \
 		while (s[i])
 			copy(replaced, s, &i, &j);
 	}
-	if (replaced[j] != '\0')
-		replaced[j] = '\0';
+	add_string_final(replaced, j);
 }
 
 char	*ft_subst_first(char *s, char *to_replace, char *replacement)

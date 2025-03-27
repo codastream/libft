@@ -6,7 +6,7 @@
 /*   By: fpetit <fpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 10:45:29 by fpetit            #+#    #+#             */
-/*   Updated: 2025/01/29 19:08:38 by fpetit           ###   ########.fr       */
+/*   Updated: 2025/03/27 14:45:39 by fpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 		return ((char *)(big));
 	while (*big && i < len)
 	{
-		if (i + len_little <= len_big && ft_strncmp(big, little, len_little) == 0)
+		if (i + len_little <= len_big && ft_strncmp(big, little, \
+				len_little) == 0)
 			return ((char *)(big));
 		big++;
 		i++;
@@ -50,7 +51,8 @@ char	*ft_strstr(const char *big, const char *little)
 		return ((char *)(big));
 	while (*big)
 	{
-		if (i + len_little <= len_big && ft_strncmp(big, little, len_little) == 0)
+		if (i + len_little <= len_big && ft_strncmp(big, little, \
+				len_little) == 0)
 			return ((char *)(big));
 		big++;
 		i++;

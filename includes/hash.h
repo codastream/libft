@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   hash.h                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fpetit <fpetit@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/27 14:23:22 by fpetit            #+#    #+#             */
+/*   Updated: 2025/03/27 14:23:55 by fpetit           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef HASH_H
 # define HASH_H
 
@@ -29,4 +41,4 @@ char				*ft_hash_get(t_hash *hash, char *key);
 int					ft_hash_remove(t_hash *hash, char *key);
 void				ft_free_hashtable(t_hash *hash);
 
-# endif
+#endif

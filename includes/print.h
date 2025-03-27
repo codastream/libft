@@ -1,6 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   print.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fpetit <fpetit@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/27 14:24:06 by fpetit            #+#    #+#             */
+/*   Updated: 2025/03/27 14:24:52 by fpetit           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PRINT_H
 # define PRINT_H
-
 
 # define PRINTF_ERROR -1
 
@@ -31,4 +42,4 @@ int					ft_print_str_fd(int fd, const char *s);
 int					ft_print_unsigned_fd(int fd, unsigned int n);
 int					ft_printfd(int fd, const char *s, ...);
 
-# endif
+#endif

@@ -6,13 +6,13 @@
 /*   By: fpetit <fpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 14:05:35 by fpetit            #+#    #+#             */
-/*   Updated: 2025/01/22 18:14:04 by fpetit           ###   ########.fr       */
+/*   Updated: 2025/03/27 14:53:26 by fpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "splitter.h"
 
-t_delimiter	*get_delimiter(char *s, t_delimiter **delims, char delim_type)
+t_delimiter	*get_del(char *s, t_delimiter **delims, char delim_type)
 {
 	int		i;
 	size_t	len_open;

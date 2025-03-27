@@ -6,7 +6,7 @@
 /*   By: fpetit <fpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 16:27:06 by fpetit            #+#    #+#             */
-/*   Updated: 2025/01/28 15:57:42 by fpetit           ###   ########.fr       */
+/*   Updated: 2025/03/27 14:55:10 by fpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	count_word(t_splitter *splitter, size_t *i, int *count)
 	s = splitter->s;
 	len = 0;
 	while (s[*i + len] && is_outside_delims(splitter->delims) \
-		&& !get_delimiter(&s[*i + len], splitter->delims, 'a') \
+		&& !get_del(&s[*i + len], splitter->delims, 'a') \
 		&& !get_sep_not_space(&s[*i + len], splitter->seps))
 		len++;
 	if (len > 0)
@@ -51,7 +51,7 @@ void	add_word_outside_delims(t_splitter *splitter, size_t *i, \
 	s = splitter->s;
 	len = 0;
 	while (s[*i + len] && is_outside_delims(splitter->delims) \
-		&& !get_delimiter(&s[*i + len], splitter->delims, 'a') \
+		&& !get_del(&s[*i + len], splitter->delims, 'a') \
 		&& !get_sep_not_space(&s[*i + len], splitter->seps))
 		len++;
 	if (len > 0)
@@ -73,16 +73,15 @@ static void	*fill_splitted(t_splitter *splitter, char **seps, \
 	while (s[i])
 	{
 		while (s[i] && get_sep(&s[i], seps))
-		{
 			add_sep(splitter, get_sep(&s[i], seps), &i, splitted);
-		}
 		word_len = i;
 		while (s[word_len] && !get_sep(&s[word_len], seps))
 		{
-			while (get_delimiter(&s[word_len], delims, 'a'))
+			while (get_del(&s[word_len], delims, 'a'))
 				go_to_end_of_delim(splitter, splitted, &word_len);
- 			while (s[word_len] && !get_sep(&s[word_len], seps) && !get_delimiter(&s[word_len], delims, 'a'))
-				word_len++;				// i = word_len;
+			while (s[word_len] && !get_sep(&s[word_len], seps) \
+				&& !get_del(&s[word_len], delims, 'a'))
+				word_len++;
 		}
 		len = word_len - i;
 		add_elem(splitter, splitted, len, &i);
@@ -93,10 +92,12 @@ static void	*fill_splitted(t_splitter *splitter, char **seps, \
 /*
  * requires that all literal delimiters (quotes) are closed
  */
-char	**ft_split_skip(const char *str, char **seps, t_delimiter **ignore_delimiters)
+char	**ft_split_skip(const char *str, char **seps, \
+		t_delimiter **ignore_delimiters)
 {
 	t_splitter	*splitter;
 	char		**splitted;
+
 	if (!str)
 		return (NULL);
 	splitter = init_splitter(str, seps, ignore_delimiters);

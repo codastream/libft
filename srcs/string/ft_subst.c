@@ -6,7 +6,7 @@
 /*   By: fpetit <fpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 10:50:50 by fpetit            #+#    #+#             */
-/*   Updated: 2025/01/29 19:08:38 by fpetit           ###   ########.fr       */
+/*   Updated: 2025/03/27 14:45:17 by fpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,11 @@ void	replace_str(char *s, char *replaced, char *to_replace, \
 	j = 0;
 	while (s[i])
 	{
-		while (s[i] && ft_strncmp((const char *)&s[i], to_replace, len_to_r) != 0)
+		while (s[i] && ft_strncmp((const char *)&s[i], to_replace, \
+			len_to_r) != 0)
 			copy(replaced, s, &i, &j);
 		replaced[j] = '\0';
-		while (s[i] && !ft_strncmp((const char*)&s[i], to_replace, len_to_r))
+		while (s[i] && !ft_strncmp((const char *)&s[i], to_replace, len_to_r))
 		{
 			ft_strcat(replaced, replacement);
 			i += len_to_r;

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   list.h                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fpetit <fpetit@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/27 14:24:28 by fpetit            #+#    #+#             */
+/*   Updated: 2025/03/27 14:25:00 by fpetit           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef LIST_H
 # define LIST_H
 
@@ -18,4 +30,4 @@ t_list				*ft_lstmap(t_list *lst, void *(*f)(void *), \
 t_list				*ft_lstnew(void *content);
 int					ft_lstsize(t_list *lst);
 
-# endif
+#endif

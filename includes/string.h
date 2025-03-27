@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   string.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fpetit <fpetit@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/27 14:24:21 by fpetit            #+#    #+#             */
+/*   Updated: 2025/03/27 14:26:05 by fpetit           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef STRING_H
 # define STRING_H
 
@@ -46,4 +58,4 @@ char				*ft_subst(char *s, char *to_replace, char *replacement);
 char				*ft_subst_first(char *s, char *to_replace, \
 						char *replacement);
 
-# endif
+#endif

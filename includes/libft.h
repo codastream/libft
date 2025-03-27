@@ -22,10 +22,9 @@
 
 # include "get_next_line.h"
 # include "hash.h"
+# include "queue.h"
 # include "tab.h"
-# include "stack.h"
 # include "list.h"
-// # include "tree.h"
 # include "splitter.h"
 # include "conversion.h"
 # include "string.h"

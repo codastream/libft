@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_isalnumstr.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fpetit <fpetit@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/27 14:43:40 by fpetit            #+#    #+#             */
+/*   Updated: 2025/03/27 14:44:06 by fpetit           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "libft.h"
 
@@ -17,7 +28,7 @@ int	ft_isalnumstr(char *s)
 	return (1);
 }
 
-bool ft_isenvvarkeystr(char *s)
+bool	ft_isenvvarkeystr(char *s)
 {
 	int	i;
 

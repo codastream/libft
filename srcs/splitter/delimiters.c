@@ -6,7 +6,7 @@
 /*   By: fpetit <fpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 14:05:35 by fpetit            #+#    #+#             */
-/*   Updated: 2025/01/22 18:46:59 by fpetit           ###   ########.fr       */
+/*   Updated: 2025/03/27 14:53:26 by fpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ void	count_elem(size_t *i, int len, int *count)
 	*i += len + 1;
 }
 
-void	go_to_end_of_delim_count(t_splitter *splitter, t_delimiter **delims, size_t *i, \
-	int *count)
+void	go_to_end_of_delim_count(t_splitter *splitter, t_delimiter **delims, \
+	size_t *i, int *count)
 {
 	t_delimiter	*opening_delim;
 	t_delimiter	*closing_delim;
@@ -42,8 +42,8 @@ void	go_to_end_of_delim_count(t_splitter *splitter, t_delimiter **delims, size_t
 
 	(void) count;
 	s = splitter->s;
-	opening_delim = get_delimiter(&s[*i], delims, 'o');
-	closing_delim = get_delimiter(&s[*i], delims, 'c');
+	opening_delim = get_del(&s[*i], delims, 'o');
+	closing_delim = get_del(&s[*i], delims, 'c');
 	if (opening_delim)
 	{
 		if (is_outside_delims(delims))
@@ -67,8 +67,8 @@ void	go_to_end_of_delim(t_splitter *splitter, char **splitted, size_t *i)
 	int			len_delim_token;
 
 	(void) splitted;
-	opening_delim = get_delimiter(&splitter->s[*i], splitter->delims, 'o');
-	closing_delim = get_delimiter(&splitter->s[*i], splitter->delims, 'c');
+	opening_delim = get_del(&splitter->s[*i], splitter->delims, 'o');
+	closing_delim = get_del(&splitter->s[*i], splitter->delims, 'c');
 	if (opening_delim)
 	{
 		if (is_outside_delims(splitter->delims))
