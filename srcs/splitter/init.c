@@ -6,7 +6,7 @@
 /*   By: fpetit <fpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 14:03:32 by fpetit            #+#    #+#             */
-/*   Updated: 2025/03/27 14:53:26 by fpetit           ###   ########.fr       */
+/*   Updated: 2025/03/27 14:57:33 by fpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,7 @@ int	count_elems(t_splitter *splitter, char *s, char **seps, \
 	while (s[i])
 	{
 		while (s[i] && get_sep(&s[i], seps))
-		{
 			count_sep(get_sep(&s[i], seps), &i, &count);
-		}
 		word_len = i;
 		while (s[word_len] && !get_sep(&s[word_len], seps))
 		{
@@ -70,6 +68,7 @@ int	count_elems(t_splitter *splitter, char *s, char **seps, \
 			count++;
 		i = word_len;
 	}
+	return (count);
 }
 
 char	**init_splitskipped(t_splitter *splitter, char *s, char **seps, \
