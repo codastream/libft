@@ -6,7 +6,7 @@
 /*   By: fpetit <fpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 17:00:24 by fpetit            #+#    #+#             */
-/*   Updated: 2024/12/30 18:06:07 by fpetit           ###   ########.fr       */
+/*   Updated: 2025/03/28 15:27:49 by fpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # define P_YELLOW "\033[0;33m"
 # define P_BLUE "\033[0;34m"
 # define P_PINK "\033[0;35m"
+# define P_PINK_LIGHT "\033[38;5;206m"
 # define P_TEAL "\033[0;36m"
 
 #endif
