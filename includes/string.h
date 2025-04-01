@@ -6,7 +6,7 @@
 /*   By: fpetit <fpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 14:24:21 by fpetit            #+#    #+#             */
-/*   Updated: 2025/03/27 14:26:05 by fpetit           ###   ########.fr       */
+/*   Updated: 2025/04/02 00:06:50 by fpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int					ft_strrchri(const char *s, unsigned char c);
 int					ft_strcharsi(char *str, char *searchedchars);
 int					ft_strstri(char *str, char **searched);
 int					ft_strcmp(const char *s1, const char *s2);
+int					ft_strcmp_igncase(const char *s1, const char *s2);
 char				*ft_strdup(const char *s);
 char				*ft_strnduup(const char *s, size_t n);
 void				ft_striteri(char *s, void (*f)(unsigned int, char*));
@@ -54,6 +55,7 @@ char				*ft_strtrim(char const *s1, char const *set);
 char				*ft_substr(char const *s, unsigned int start, size_t len);
 int					ft_toupper(int c);
 int					ft_tolower(int c);
+char				*ft_tolowerstr(char *s);
 char				*ft_subst(char *s, char *to_replace, char *replacement);
 char				*ft_subst_first(char *s, char *to_replace, \
 						char *replacement);
