@@ -6,7 +6,7 @@
 /*   By: fpetit <fpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 10:45:29 by fpetit            #+#    #+#             */
-/*   Updated: 2025/04/02 00:27:49 by fpetit           ###   ########.fr       */
+/*   Updated: 2025/04/02 14:03:13 by fpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int	ft_strcmp_igncase(const char *s1, const char *s2)
 	size_t	i;
 	char	*l1;
 	char	*l2;
+	int		result;
 
 	if (!s1)
 		return ((unsigned char) *s2);
@@ -42,9 +43,10 @@ int	ft_strcmp_igncase(const char *s1, const char *s2)
 	l2 = ft_tolowerstr((char *)s2);
 	i = 0;
 	while (l1[i] && l2[i] && (l1[i] == l2[i]))
-	{
 		i++;
-	}
-	return ((unsigned char)(l1[i]) - \
-		(unsigned char)(l2[i]));
+	result = (unsigned char)(l1[i]) - \
+		(unsigned char)(l2[i]);
+	free(l1);
+	free(l2);
+	return (result);
 }
