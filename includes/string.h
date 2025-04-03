@@ -6,12 +6,20 @@
 /*   By: fpetit <fpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 14:24:21 by fpetit            #+#    #+#             */
-/*   Updated: 2025/04/02 00:06:50 by fpetit           ###   ########.fr       */
+/*   Updated: 2025/04/03 22:17:40 by fpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRING_H
 # define STRING_H
+
+typedef struct s_replace
+{
+	char	*s;
+	char	*to_rep;
+	char	*replacement;
+	int		after_i;
+}	t_replace;
 
 bool				ft_isalnum(int c);
 int					ft_isalnumstr(char *c);
@@ -57,7 +65,7 @@ int					ft_toupper(int c);
 int					ft_tolower(int c);
 char				*ft_tolowerstr(char *s);
 char				*ft_subst(char *s, char *to_replace, char *replacement);
-char				*ft_subst_first(char *s, char *to_replace, \
-						char *replacement);
+char				*ft_subst_first_after_i(char *s, char *to_replace, \
+						char *replacement, int after_i);
 
 #endif
