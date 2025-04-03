@@ -6,7 +6,7 @@
 /*   By: fpetit <fpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 10:50:50 by fpetit            #+#    #+#             */
-/*   Updated: 2025/04/03 22:05:46 by fpetit           ###   ########.fr       */
+/*   Updated: 2025/04/03 23:46:56 by fpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,5 +75,6 @@ char	*ft_subst_first_after_i(char *s, char *to_replace, char *replacement, \
 	if (!replaced)
 		return (NULL);
 	replace_str(replace, replaced);
+	free(replace);
 	return (replaced);
 }
