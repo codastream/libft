@@ -6,7 +6,7 @@
 /*   By: fpetit <fpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 14:24:21 by fpetit            #+#    #+#             */
-/*   Updated: 2025/04/03 22:17:40 by fpetit           ###   ########.fr       */
+/*   Updated: 2025/05/12 20:17:31 by alaualik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int					ft_isalnumstr(char *c);
 bool				ft_ischarforenvvar(int c);
 bool				ft_isenvvarkeystr(char *s);
 int					ft_isalpha(int c);
+char				*ft_strcpy(char *dest, const char *src);
 int					ft_isascii(int c);
 int					ft_isdigit(int c);
 bool				ft_isemptychar(char c);
